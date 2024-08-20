@@ -14,7 +14,15 @@ public class Category {
     }
 
     public Category(Long Id, String name, String description) {
+        ValidateName(name);
+        ValidateDescription(description);
         this.Id = Id;
+        this.name = name;
+        this.description = description;
+    }
+    public Category(String name, String description) {
+        ValidateName(name);
+        ValidateDescription(description);
         this.name = name;
         this.description = description;
     }
