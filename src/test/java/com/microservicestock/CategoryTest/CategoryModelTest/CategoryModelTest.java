@@ -1,13 +1,13 @@
 package com.microservicestock.CategoryTest.CategoryModelTest;
 
-import com.microservicestock.domain.Category.CategoryModel.Category;
-import com.microservicestock.domain.Category.CategoryModel.CategoryConstants.CategoryConstant;
+import com.microservicestock.domain.category.model.Category;
+import com.microservicestock.domain.category.model.categoryConstants.categoryConstant;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CategoryModelTest {
+class CategoryModelTest {
 
 
     @Test
@@ -27,7 +27,7 @@ public class CategoryModelTest {
                 IllegalArgumentException.class,
                 () -> new Category(null, categoryDescription)
         );
-        assertEquals(CategoryConstant.CATEGORY_NAME_REQUIRED, exception.getMessage());
+        assertEquals(categoryConstant.CATEGORY_NAME_REQUIRED, exception.getMessage());
     }
     @Test
     void CreateCategoryModelTest_withEmptyName() {
@@ -36,7 +36,7 @@ public class CategoryModelTest {
                 IllegalArgumentException.class,
                 () -> new Category("", categoryDescription)
         );
-        assertEquals(CategoryConstant.CATEGORY_NAME_REQUIRED, exception.getMessage());
+        assertEquals(categoryConstant.CATEGORY_NAME_REQUIRED, exception.getMessage());
     }
     @Test
     void CreateCategoryModelTest_withNullDescription() {
@@ -45,7 +45,7 @@ public class CategoryModelTest {
                 IllegalArgumentException.class,
                 () -> new Category(categoryName, null)
         );
-        assertEquals(CategoryConstant.CATEGORY_DESCRIPTION_REQUIRED, exception.getMessage());
+        assertEquals(categoryConstant.CATEGORY_DESCRIPTION_REQUIRED, exception.getMessage());
     }
     @Test
     void CreateCategoryModelTest_withEmptyDescription() {
@@ -54,27 +54,27 @@ public class CategoryModelTest {
                 IllegalArgumentException.class,
                 () -> new Category(categoryName, "")
         );
-        assertEquals(CategoryConstant.CATEGORY_DESCRIPTION_REQUIRED, exception.getMessage());
+        assertEquals(categoryConstant.CATEGORY_DESCRIPTION_REQUIRED, exception.getMessage());
     }
     @Test
     void CreateCategoryModelTest_withNameExceedingMaxLength() {
-        String categoryName = "AA".repeat(CategoryConstant.NAME_MAX_LEGTH);
+        String categoryName = "AA".repeat(categoryConstant.NAME_MAX_LEGTH);
         String categoryDescription = "Children's playthings";
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> new Category(categoryName, categoryDescription)
         );
-        assertEquals(CategoryConstant.INVALID_CATEGORY_NAME, exception.getMessage());
+        assertEquals(categoryConstant.INVALID_CATEGORY_NAME, exception.getMessage());
     }
     @Test
     void CreateCategoryModelTest_withDescriptionExceedingMaxLength() {
         String categoryName = "Toys";
-        String categoryDescription = "AA".repeat(CategoryConstant.DESCRIPTION_MAX_LENGTH);
+        String categoryDescription = "AA".repeat(categoryConstant.DESCRIPTION_MAX_LENGTH);
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> new Category(categoryName, categoryDescription)
         );
-        assertEquals(CategoryConstant.INVALID_CATEGORY_DESCRIPTION, exception.getMessage());
+        assertEquals(categoryConstant.INVALID_CATEGORY_DESCRIPTION, exception.getMessage());
     }
 
 

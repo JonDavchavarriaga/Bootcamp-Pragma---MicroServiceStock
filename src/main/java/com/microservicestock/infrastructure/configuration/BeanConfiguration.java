@@ -1,11 +1,11 @@
 package com.microservicestock.infrastructure.configuration;
 
-import com.microservicestock.domain.Category.CategoryPort.CategoryPortPersistence.iCategoryPersistencePort;
-import com.microservicestock.domain.Category.CategoryPort.CategoryPortService.iCategoryServicePort;
-import com.microservicestock.domain.Category.CategoryUseCases.CategoryUseCase;
-import com.microservicestock.infrastructure.infrastructureCategory.adapter.adapterCategoryEntity.CategoryAdapterEntity;
-import com.microservicestock.infrastructure.infrastructureCategory.adapter.adapterMapper.CategoryMapperEntity;
-import com.microservicestock.infrastructure.infrastructureCategory.adapter.persistence.iCategoryRepository;
+import com.microservicestock.domain.category.port.persistence.ICategoryPersistencePort;
+import com.microservicestock.domain.category.port.service.ICategoryServicePort;
+import com.microservicestock.domain.category.usecase.CategoryUseCase;
+import com.microservicestock.infrastructure.category.adapter.entity.CategoryAdapterEntity;
+import com.microservicestock.infrastructure.category.adapter.mapper.CategoryMapperEntity;
+import com.microservicestock.infrastructure.category.adapter.persistence.ICategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,15 +13,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class BeanConfiguration {
-    private final iCategoryRepository categoryRepository;
+    private final ICategoryRepository categoryRepository;
     private final CategoryMapperEntity categoryEntityMapper;
 
     @Bean
-    public iCategoryPersistencePort categoryPersistencePort() {
+    public ICategoryPersistencePort categoryPersistencePort() {
         return new CategoryAdapterEntity(categoryRepository, categoryEntityMapper);
     }
     @Bean
-    public iCategoryServicePort CategoryRepository() {
+    public ICategoryServicePort categoryServicePort() {
         return new CategoryUseCase(categoryPersistencePort());
     }
 
