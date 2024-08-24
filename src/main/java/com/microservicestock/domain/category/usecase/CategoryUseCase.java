@@ -16,4 +16,8 @@ public class CategoryUseCase implements ICategoryServicePort {
     public void saveCategory(Category category) {
         categoryPersistencePort.saveCategory(category);
     }
+    @Override
+    public boolean categoryExistsByName(String name) {
+        return categoryPersistencePort.categoryExistsByName(name);
+    }
 }
