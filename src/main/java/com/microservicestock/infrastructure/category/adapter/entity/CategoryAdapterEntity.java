@@ -7,6 +7,8 @@ import com.microservicestock.infrastructure.category.adapter.mapper.CategoryMapp
 import com.microservicestock.infrastructure.category.adapter.persistence.ICategoryRepository;
 import com.microservicestock.infrastructure.category.exception.CategoryExistsException;
 import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class CategoryAdapterEntity implements ICategoryPersistencePort {
@@ -24,5 +26,11 @@ public class CategoryAdapterEntity implements ICategoryPersistencePort {
     @Override
     public boolean categoryExistsByName(String name) {
         return categoryRepository.existsByName(name);
+    }
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll().stream()
+                .map(categoryMapperEntity::toDomain)
+                .collect(Collectors.toList());
     }
 }

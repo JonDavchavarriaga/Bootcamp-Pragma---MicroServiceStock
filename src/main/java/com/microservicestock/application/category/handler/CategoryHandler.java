@@ -8,6 +8,13 @@ import com.microservicestock.domain.category.port.service.ICategoryServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import jakarta.transaction.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -25,6 +32,13 @@ public class CategoryHandler implements ICategoryHandler {
         }else{
             throw new IllegalArgumentException(categoryConstant.CATEGORY_ALREADY_EXISTS);
         }
+    }
+    @Override
+    public List<CategoryDto> getCategoriesSortedAndPaged(int page, int size, boolean ascending) {
+        List<Category> categories = categoryServicePort.getCategoriesSortedAndPaged(page, size, ascending);
+        return categories.stream()
+                .map(categoryDtoMapper::toDto)
+                .collect(Collectors.toList());
     }
 
 }
