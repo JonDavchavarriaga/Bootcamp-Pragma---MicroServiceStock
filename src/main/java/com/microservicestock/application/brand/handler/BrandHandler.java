@@ -9,6 +9,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -24,5 +27,12 @@ public class BrandHandler implements IBrandHandler {
         }else{
             throw new IllegalArgumentException(brandConstants.BRAND_ALREADY_EXISTS);
         }
+    }
+    @Override
+    public List<BrandDto> getBrandsSortedAndPaged(int page, int size, boolean ascending) {
+        List<Brand> brands = brandServicePort.getBrandsSortedAndPaged(page, size, ascending);
+        return brands.stream()
+                .map(brandDtoMapper::toDto)
+                .collect(Collectors.toList());
     }
 }

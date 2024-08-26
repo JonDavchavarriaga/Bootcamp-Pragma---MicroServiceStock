@@ -8,5 +8,5 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface BrandMapperEntity {
     BrandEntity toEntity(Brand category);
-    Category toDomain(BrandEntity brandEntity);
+    Brand toDomain(BrandEntity brandEntity);
 }

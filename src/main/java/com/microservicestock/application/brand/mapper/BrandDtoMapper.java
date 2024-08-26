@@ -8,4 +8,5 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface BrandDtoMapper {
     Brand toDomain(BrandDto brandDto);
+    BrandDto toDto(Brand brand);
 }
