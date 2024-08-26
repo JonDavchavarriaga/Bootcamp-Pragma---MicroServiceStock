@@ -8,10 +8,7 @@ import com.microservicestock.domain.category.port.service.ICategoryServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import jakarta.transaction.Transactional;
+
 
 import java.util.List;
 import java.util.stream.Collectors;

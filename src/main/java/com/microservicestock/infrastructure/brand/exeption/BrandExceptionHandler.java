@@ -1,5 +1,6 @@
-package com.microservicestock.infrastructure.category.exception;
+package com.microservicestock.infrastructure.brand.exeption;
 
+import com.microservicestock.infrastructure.category.exception.CategoryExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -7,9 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class
-CategoryExceptionHandler {
+BrandExceptionHandler {
 
-    @ExceptionHandler(CategoryExistsException.class)
+    @ExceptionHandler(BrandExistsException.class)
     public ResponseEntity<String> handleCategoryExistsException(CategoryExistsException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }

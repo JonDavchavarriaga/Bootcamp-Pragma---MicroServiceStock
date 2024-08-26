@@ -3,9 +3,6 @@ package com.microservicestock.domain.category.usecase;
 import com.microservicestock.domain.category.model.Category;
 import com.microservicestock.domain.category.port.persistence.ICategoryPersistencePort;
 import com.microservicestock.domain.category.port.service.ICategoryServicePort;
-import org.apache.logging.log4j.util.PropertySource;
-import org.springframework.util.comparator.Comparators;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
