@@ -8,4 +8,5 @@ public interface IBrandServicePort {
     boolean brandExistsByName(String name);
     List<Brand> getAllBrands();
     List<Brand> getBrandsSortedAndPaged(int page, int size, boolean ascending);
+    Brand getBrandById(Long id);
 }

@@ -45,4 +45,14 @@ class CategoryRepositoryTest {
         boolean exists = brandRepository.existsByName("Nike");
         assertTrue(exists);
     }
+    @Test
+    @DisplayName("should Return Brand When Exists By Id")
+    void shouldReturnBrandWhenExistsById() {
+        BrandEntity brandEntity = new BrandEntity(null, "Nike", "Sportswear");
+        entityManager.persist(brandEntity);
+
+        Optional<BrandEntity> retrievedBrand = brandRepository.findById(brandEntity.getId());
+        assert retrievedBrand.isPresent();
+        assertEquals("Nike", retrievedBrand.get().getName());
+    }
 }

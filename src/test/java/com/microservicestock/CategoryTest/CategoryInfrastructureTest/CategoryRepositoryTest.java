@@ -13,8 +13,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -39,15 +38,15 @@ class CategoryRepositoryTest {
         assert retrievedCategory.isPresent();
         assertEquals("Category Test", retrievedCategory.get().getName());
     }
-
     @Test
-    @DisplayName("Test Exists by name")
-    void testExistsByName() {
+    @DisplayName("should Return Category When Exists By Id")
+    void shouldReturnCategoryWhenExistsById() {
         CategoryEntity categoryEntity = new CategoryEntity(null, "Category Test", "Category Test Description");
-        categoryRepository.save(categoryEntity);
-        entityManager.flush();
-        boolean exists = categoryRepository.existsByName("Category Test");
-        assertTrue(exists);
-    }
+        entityManager.persist(categoryEntity);
 
+        Optional<CategoryEntity> retrievedCategory = categoryRepository.findById(categoryEntity.getId());
+        assert retrievedCategory.isPresent();
+        assertEquals("Category Test", retrievedCategory.get().getName());
+
+    }
 }

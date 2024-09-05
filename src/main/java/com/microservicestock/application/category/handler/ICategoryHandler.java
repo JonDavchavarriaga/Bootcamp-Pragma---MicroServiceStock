@@ -6,4 +6,7 @@ public interface ICategoryHandler {
     void saveCategory(CategoryDto categoryDto);
 
     List<CategoryDto> getCategoriesSortedAndPaged(int page, int size, boolean ascending);
+
+
+    CategoryDto getCategoryById(Long id);
 }

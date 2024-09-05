@@ -8,4 +8,5 @@ public class categoryConstant {
     public static final String CATEGORY_NAME_REQUIRED = "Category name is required";
     public static final String CATEGORY_DESCRIPTION_REQUIRED = "Category description is required";
     public static final String CATEGORY_ALREADY_EXISTS = "Category already exists";
+    public static final String CATEGORY_NOT_FOUND = "Category not found";
 }

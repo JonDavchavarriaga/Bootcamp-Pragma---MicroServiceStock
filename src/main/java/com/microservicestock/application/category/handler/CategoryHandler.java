@@ -38,4 +38,14 @@ public class CategoryHandler implements ICategoryHandler {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public CategoryDto getCategoryById(Long id) {
+        try {
+            Category category = categoryServicePort.getCategoryById(id);
+            return categoryDtoMapper.toDto(category);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(categoryConstant.CATEGORY_NOT_FOUND);
+        }
+    }
+
 }

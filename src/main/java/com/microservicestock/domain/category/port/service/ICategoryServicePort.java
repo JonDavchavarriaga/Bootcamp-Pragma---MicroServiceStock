@@ -8,4 +8,5 @@ public interface ICategoryServicePort {
     boolean categoryExistsByName(String name);
     List<Category>getAllCategories();
     List<Category> getCategoriesSortedAndPaged(int page, int size, boolean ascending);
+    Category getCategoryById(Long id);
 }

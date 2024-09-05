@@ -8,4 +8,5 @@ import java.util.List;
 public interface IBrandHandler {
     void saveBrand(BrandDto brandDto);
     List<BrandDto> getBrandsSortedAndPaged(int page, int size, boolean ascending);
+    BrandDto getBrandById(Long id);
 }

@@ -10,4 +10,6 @@ public interface ICategoryPersistencePort {
     boolean categoryExistsByName(String name);
 
     List<Category> getAllCategories();
+
+    Category getCategoryById(Long id);
 }

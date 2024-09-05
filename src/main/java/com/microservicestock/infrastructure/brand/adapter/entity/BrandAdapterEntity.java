@@ -34,5 +34,10 @@ public class BrandAdapterEntity implements IBrandPersistencePort {
                 .map(brandMapperEntity::toDomain)
                 .collect(Collectors.toList());
     }
-
+    @Override
+    public Brand getBrandById(Long id) {
+        return brandRepository.findById(id)
+                .map(brandMapperEntity::toDomain)
+                .orElseThrow(() -> new IllegalArgumentException(brandConstants.BRAND_NOT_FOUND));
+    }
 }

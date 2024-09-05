@@ -33,4 +33,10 @@ public class CategoryAdapterEntity implements ICategoryPersistencePort {
                 .map(categoryMapperEntity::toDomain)
                 .collect(Collectors.toList());
     }
+    @Override
+    public Category getCategoryById(Long id) {
+        return categoryRepository.findById(id)
+                .map(categoryMapperEntity::toDomain)
+                .orElseThrow(() -> new IllegalArgumentException(categoryConstant.CATEGORY_NOT_FOUND));
+    }
 }

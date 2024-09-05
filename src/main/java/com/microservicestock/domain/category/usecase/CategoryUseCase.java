@@ -45,6 +45,10 @@ public class CategoryUseCase implements ICategoryServicePort {
 
         return categories.subList(start, end);
     }
+    @Override
+    public Category getCategoryById(Long id) {
+        return categoryPersistencePort.getCategoryById(id);
+    }
 
 
 }

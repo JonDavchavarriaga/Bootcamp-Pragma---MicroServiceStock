@@ -42,4 +42,5 @@ class CategoryAplicationTest {
         verify(categoryDtoMapper, times(1)).toDomain(categoryDto);
         verify(categoryServicePort, times(1)).saveCategory(category);
     }
+
 }

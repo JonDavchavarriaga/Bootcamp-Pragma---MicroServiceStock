@@ -8,4 +8,5 @@ public class brandConstants {
     public static final String BRAND_NAME_REQUIRED = "Brand name is required";
     public static final String BRAND_DESCRIPTION_REQUIRED = "Brand description is required";
     public static final String BRAND_ALREADY_EXISTS = "Brand already exists";
+    public static final String BRAND_NOT_FOUND = "Brand not found";
 }

@@ -35,4 +35,13 @@ public class BrandHandler implements IBrandHandler {
                 .map(brandDtoMapper::toDto)
                 .collect(Collectors.toList());
     }
+    @Override
+    public BrandDto getBrandById(Long id) {
+        try {
+            Brand brand = brandServicePort.getBrandById(id);
+            return brandDtoMapper.toDto(brand);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(brandConstants.BRAND_NOT_FOUND);
+        }
+    }
 }
