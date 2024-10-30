@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 
 public class BrandUseCase  implements IBrandServicePort {
+
     private final IBrandPersistencePort brandPersistencePort;
 
     public BrandUseCase(IBrandPersistencePort brandPersistencePort) {
@@ -19,14 +20,20 @@ public class BrandUseCase  implements IBrandServicePort {
     public void saveBrand(Brand brand) {
         brandPersistencePort.saveBrand(brand);
     }
+
+
     @Override
     public boolean brandExistsByName(String name) {
         return brandPersistencePort.brandExistsByName(name);
     }
+
+
     @Override
     public List<Brand> getAllBrands() {
         return brandPersistencePort.getAllBrands();
     }
+
+
     public List<Brand> getBrandsSortedAndPaged(int page, int size, boolean ascending) {
         List<Brand> brands = getAllBrands();
 

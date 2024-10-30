@@ -11,80 +11,72 @@ public class Article {
      private String description;
      private int quantity;
      private double price;
-     private List<Category> categories;
-     private Brand brand;
+     private Long categoryId;
+     private Long brandId;
 
-     private static final int CATEGORY_MINIMUN = articleConstants.CATEGORY_MINIMUN;
-        private static final int CATEGORY_MAXIMUN = articleConstants.CATEGORY_MAXIMUN;
-     public Article() {
-     }
-
-     public Article(Long id, String name, String description, int quantity, double price, List<Category> categories, Brand brand) {
-         validateCategories(categories);
-         validateNoRepeatedCategories(categories);
-         this.id = id;
-         this.name = name;
-         this.description = description;
-         this.quantity = quantity;
-         this.price = price;
-         this.categories = categories;
-         this.brand = brand;
-     }
-     public Article(String name, String description, int quantity, double price, List<Category> categories, Brand brand) {
-         validateCategories(categories);
-         validateNoRepeatedCategories(categories);
-         this.name = name;
-         this.description = description;
-         this.quantity = quantity;
-         this.price = price;
-         this.categories = categories;
-         this.brand = brand;
-     }
-        public Long getId() {
-            return id;
-        }
-        public String getName() {
-            return name;
-        }
-        public String getDescription() {
-            return description;
-        }
-        public int getQuantity() {
-            return quantity;
-        }
-        public double getPrice() {
-            return price;
-        }
-        public List<Category> getCategories() {
-            return categories;
-        }
-        public Brand getBrand() {
-            return brand;
-        }
-        public void setCategories(List<Category> categories) {
-            validateCategories(categories);
-            validateNoRepeatedCategories(categories);
-            this.categories = categories;
-        }
-    public  void validateCategories(List<Category> categories){
-        if(categories.size() < CATEGORY_MINIMUN){
-            throw new IllegalArgumentException(articleConstants.ARTICLE_CATEGORYES_MINIMUN);
-        }
-        if(categories.size() > CATEGORY_MAXIMUN){
-            throw new IllegalArgumentException(articleConstants.ARTICLE_CATEGORYES_MAXIMUN);
-        }
+    public Article(Long id, String name, String description, int quantity, double price, Long categoryId, Long brandId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+        this.price = price;
+        this.categoryId = categoryId;
+        this.brandId = brandId;
     }
 
-    public void validateNoRepeatedCategories(List<Category> categories){
-        for(int i = 0; i < categories.size(); i++){
-            for(int j = i + 1; j < categories.size(); j++){
-                if(categories.get(i).getId().equals(categories.get(j).getId())){
-                    throw new IllegalArgumentException(articleConstants.ARTICLE_CATEGORYES_REPEATED);
-                }
-            }
-        }
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
+    }
 }

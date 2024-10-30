@@ -3,6 +3,8 @@ package com.microservicestock.domain.category.usecase;
 import com.microservicestock.domain.category.model.Category;
 import com.microservicestock.domain.category.port.persistence.ICategoryPersistencePort;
 import com.microservicestock.domain.category.port.service.ICategoryServicePort;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +12,7 @@ import java.util.stream.Collectors;
 public class CategoryUseCase implements ICategoryServicePort {
 
     private final ICategoryPersistencePort categoryPersistencePort;
+
 
     public CategoryUseCase(ICategoryPersistencePort categoryPersistencePort) {
         this.categoryPersistencePort = categoryPersistencePort;
@@ -19,6 +22,7 @@ public class CategoryUseCase implements ICategoryServicePort {
     public void saveCategory(Category category) {
         categoryPersistencePort.saveCategory(category);
     }
+
     @Override
     public boolean categoryExistsByName(String name) {
         return categoryPersistencePort.categoryExistsByName(name);

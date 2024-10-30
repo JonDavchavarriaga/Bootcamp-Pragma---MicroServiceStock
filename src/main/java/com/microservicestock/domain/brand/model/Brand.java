@@ -33,6 +33,8 @@ public class Brand {
     public String getDescription() {
         return description;
     }
+
+
     public void setName(String name) {
         validateName(name);
         this.name = name;
