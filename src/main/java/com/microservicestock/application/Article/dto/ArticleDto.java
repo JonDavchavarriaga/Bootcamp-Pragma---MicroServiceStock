@@ -19,6 +19,7 @@ public class ArticleDto {
     private String description;
     private int quantity;
     private double price;
+    private String image;
     private Long categoryId;
     private Long brandId;
 }

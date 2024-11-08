@@ -6,20 +6,22 @@ import com.microservicestock.domain.category.model.Category;
 import java.util.List;
 
 public class Article {
-     private Long id;
-     private String name;
-     private String description;
-     private int quantity;
-     private double price;
-     private Long categoryId;
-     private Long brandId;
+    private Long id;
+    private String name;
+    private String description;
+    private int quantity;
+    private double price;
+    private String image;
+    private Long categoryId;
+    private Long brandId;
 
-    public Article(Long id, String name, String description, int quantity, double price, Long categoryId, Long brandId) {
+    public Article(Long id, String name, String description, int quantity, double price, String image, Long categoryId, Long brandId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
+        this.image = image;
         this.categoryId = categoryId;
         this.brandId = brandId;
     }
@@ -62,6 +64,14 @@ public class Article {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Long getCategoryId() {

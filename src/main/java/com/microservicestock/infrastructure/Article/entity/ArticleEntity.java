@@ -23,6 +23,7 @@ public class ArticleEntity {
     private String description;
     private int quantity;
     private double price;
+    private String image;
 
     @Column(name = "category_id") //
     private Long categoryId;
